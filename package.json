@@ -5,11 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "decrypt": "node index.js -d -f text.txt.enc",
     "encrypt": "node index.js -e -f text.txt -p hallo123"
   },
+  "bin": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thebitrebels/git-tresor.git"

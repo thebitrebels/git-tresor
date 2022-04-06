@@ -1,0 +1,37 @@
+{
+  "name": "git-tresor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "decrypt": "node index.js -d -f text.txt.enc",
+    "encrypt": "node index.js -e -f text.txt -p hallo123"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebitrebels/git-tresor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thebitrebels/git-tresor/issues"
+  },
+  "homepage": "https://github.com/thebitrebels/git-tresor#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.2",
+    "crypto": "^1.0.1",
+    "inquirer": "^8.2.2",
+    "nanospinner": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.5.1"
+  }
+}

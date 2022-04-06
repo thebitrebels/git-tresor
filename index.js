@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import commandLineArgs from 'command-line-args';
-import { optionDefinitions, usage } from './args.js';
-import { decryptFile, encryptFile } from './crypt/core.js';
-import { log, error } from './logger.js';
-import { askPassword } from './utils.js';
+import { optionDefinitions, usage } from './src/args.js';
+import { decryptFile, encryptFile } from './src/crypt/core.js';
+import { log, error } from './src/logger.js';
+import { askPassword } from './src/utils.js';
 // Read args
 const options = commandLineArgs(optionDefinitions);
 

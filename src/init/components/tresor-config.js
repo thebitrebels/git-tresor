@@ -1,9 +1,11 @@
 import * as fs from 'fs';
 import inquirer from 'inquirer';
+import { success } from '../../logger.js';
 
-const template = (name) => {
+const template = (name, hashGeneration) => {
   return `{
-  "name": "${name}"
+  "name": "${name}",
+  "generateHash": ${hashGeneration}
 }`;
 };
 
@@ -15,8 +17,15 @@ export async function init(useDefaults) {
   if (!createConfig) {
     return 0;
   }
+
+  success('=================  tresorconfig  =================');
+  // Generate .hash-Files to check for integrity?
+  const { hashGeneration } = useDefaults
+    ? { hashGeneration: true }
+    : await askHashGeneration();
+
   const { name } = await askName(); // Needs to be answered even if the user chooses automatic setup
-  return generateConfig(template(name));
+  return generateConfig(template(name, hashGeneration));
 }
 export function successText() {
   return 'Generated .tresor.config.json!';
@@ -40,6 +49,15 @@ async function askName() {
     name: 'name',
     type: 'input',
     message: 'Tresor Name:',
+  });
+}
+
+async function askHashGeneration() {
+  return inquirer.prompt({
+    name: 'hashGeneration',
+    type: 'confirm',
+    message: 'Generate .hash-Files to check for integrity?',
+    default: true,
   });
 }
 

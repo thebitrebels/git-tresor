@@ -5,7 +5,8 @@ import * as zlib from 'zlib';
 import AppendInitVect from './appendInitVect.js';
 import nanospinner from 'nanospinner';
 import inquirer from 'inquirer';
-import { success, warning, error, log } from '../logger.js';
+import { warning } from '../logger.js';
+import { config } from '../utils.js';
 
 function getCipherKey(password) {
   return crypto.createHash('sha256').update(password).digest();
@@ -30,6 +31,9 @@ export async function encryptFile(file, password) {
       .pipe(appendInitVect)
       .pipe(writeStream)
       .on('finish', () => {
+        if (!config('generateHash')) {
+          return;
+        }
         // Create a hash of the unencrypted file for later checks (after decryption)
         const hashFile = path.join(file + '.hash');
         fs.writeFileSync(hashFile, getHash(file), (err) => {
@@ -93,6 +97,10 @@ export async function decryptFile(file, password) {
             spinner.error({ text: `Decryption failed! - ${err}` });
           })
           .on('finish', () => {
+            if (!config('generateHash')) {
+              spinner.success({ text: `Decrypted ${file}` });
+              return;
+            }
             // A .hash-File should be present to check if the decryption worked
             const fileName =
               path.extname(file) === '.enc'

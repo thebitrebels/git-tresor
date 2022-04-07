@@ -4,6 +4,7 @@ export const optionDefinitions = [
   { name: 'encrypt', alias: 'e', type: Boolean },
   { name: 'decrypt', alias: 'd', type: Boolean },
   { name: 'file', alias: 'f', type: String },
+  { name: 'directory', alias: 'r', type: String },
   { name: 'password', alias: 'p', type: String },
 ];
 
@@ -35,6 +36,14 @@ export const usage = commandLineUsage([
         name: 'file',
         alias: 'f',
         description: 'Path to the file that should be en- or decrypted.',
+        type: String,
+        multiple: false,
+        defaultOption: true,
+      },
+      {
+        name: 'directory',
+        alias: 'dir',
+        description: 'Path to a directory that should be en- or decrypted.',
         type: String,
         multiple: false,
         defaultOption: true,

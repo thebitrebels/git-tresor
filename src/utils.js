@@ -1,6 +1,8 @@
 import * as logger from './logger.js';
 import inquirer from 'inquirer';
 import { readFileSync } from 'fs';
+import glob from 'glob';
+import fs from 'fs';
 
 export async function askPassword() {
   const pw = await inquirer.prompt({
@@ -22,4 +24,10 @@ export function config(key) {
     logger.error('Can not read or parse .tresor.config.json.');
     return -1;
   }
+}
+
+export function readFolder(path, enc) {
+  return glob.sync(path + '/**/*').filter((f) => {
+    return fs.lstatSync(f).isFile() && f.endsWith('.enc') === enc;
+  });
 }

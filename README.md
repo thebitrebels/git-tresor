@@ -34,10 +34,12 @@ It will guide you trough the process of initialization.
 
 ```
 Options
-  -e, --encrypt           Flag to use encryption mode.
-  -d, --decrypt           Flag to use decryption mode.
-  -f, --file string       Path to the file that should be en- or decrypted.
-  -p, --password string   Password that is used to en- or decrypt.
+
+  -e, --encrypt              Flag to use encryption mode.
+  -d, --decrypt              Flag to use decryption mode.
+  -f, --file string          Path to the file that should be en- or decrypted.
+  -dir, --directory string   Path to a directory that should be en- or decrypted.
+  -p, --password string      Password that is used to en- or decrypt.
 ```
 
 To de- or encrypt files you need to set the `-d` or `-e` flag. In both cases you need to specify a file and a password.
@@ -50,7 +52,17 @@ git-tresor -e -f secretFile.txt -p secretPassword
 git-tresor -d -f secretFile.txt.enc -p secretPassword
 ```
 
-If you do not set `--password` you will be prompted to enter one.
+If you want to de- or encrypt folders you need to set the `-dir` option instead of `-f`.
+
+```
+# Encryption
+git-tresor -e -dir ./secretFolder -p secretPassword
+
+# Decryption
+git-tresor -d -dir ./secretFolder -p secretPassword
+```
+
+In all cases, you will be prompted to enter a password if you do not set `--password` (or `-p`).
 
 ## Sources & Further Readings
 

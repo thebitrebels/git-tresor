@@ -8,6 +8,8 @@ Encrypt and decrypt files to store them inside a git repository. `git-tresor` us
 
 ## Setup
 
+`git-tresor` can be installed via `npm`. If you want to install it globally simply type the following command:
+
 ```
 npm i -g git-tresor # Not working until it is released
 
@@ -17,6 +19,14 @@ cd git-tresor
 npm i
 npm link # After this you can test it by simply running 'git-tresor'
 ```
+
+For a local installation you run `npm i git-tresor --save-dev` from your npm-folder.
+
+### Requirements
+
+`git-tresor` runs on systems that support `npm`/`node`. If you have issues with your local environment let us know!
+
+### Initialization
 
 To initialize a new repository you should start by setting up git:
 
@@ -70,4 +80,5 @@ In all cases, you will be prompted to enter a password if you do not set `--pass
 
 ## Sources & Further Readings
 
-- Source and inspiration for core encryption code: [Medium - Brandonstilson - Let's encrypt with node](https://medium.com/@brandonstilson/lets-encrypt-files-with-node-85037bea8c0e)
+- [Brandonstilson - Let's encrypt with node](https://medium.com/@brandonstilson/lets-encrypt-files-with-node-85037bea8c0e) - Source and inspiration for core encryption code
+- [git-secret](https://github.com/sobolevn/git-secret) - A bash-tool to store your private data inside a git repository.

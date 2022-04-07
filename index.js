@@ -3,17 +3,16 @@
 import commandLineArgs from 'command-line-args';
 import { optionDefinitions, usage } from './src/args.js';
 import { decryptFile, encryptFile } from './src/crypt/core.js';
+import { init } from './src/init/init.js';
 import { log, error, success } from './src/logger.js';
-import { askPassword, welcome } from './src/utils.js';
+import { askPassword } from './src/utils.js';
 
 const mainDefinitions = [{ name: 'command', defaultOption: true }];
 const mainOptions = commandLineArgs(mainDefinitions, {
   stopAtFirstUnknown: true,
 });
 if (mainOptions.command === 'init') {
-  welcome();
-  // Init stuff
-
+  await init();
   process.exit(0);
 }
 

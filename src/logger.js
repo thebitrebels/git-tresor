@@ -11,3 +11,7 @@ export function success(text) {
 export function error(text) {
   console.error(chalk.red(text));
 }
+
+export function warning(text) {
+  console.warn(chalk.yellow(text));
+}

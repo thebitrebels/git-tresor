@@ -1,6 +1,10 @@
-# git-tresor
+<img style="width:100%" src="./logo.png" />
 
-Encrypt and decrypt files to store them with git.
+---
+
+Encrypt and decrypt files to store them inside a git repository. `git-tresor` uses [AES-256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) encryption. Every file or directory has it's own password. This enables you to commit encrypted files either in a separate git repository or inside the same repository where your secret files are needed (f.e. Android-Keystores or Signing-Certificates for Apple).
+
+---
 
 ## Setup
 
@@ -30,7 +34,7 @@ It will guide you trough the process of initialization.
 
 ## Usage
 
-`git-tresor` uses [AES-256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) encryption to encrypt files. Below you can see the currently available options.
+Below you can see the currently available options.
 
 ```
 Options

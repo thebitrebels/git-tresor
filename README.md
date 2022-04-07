@@ -5,7 +5,13 @@ Encrypt and decrypt files to store them with git.
 ## Setup
 
 ```
-npm i -g git-tresor
+npm i -g git-tresor # Not working until it is released
+
+## Current alternative
+git clone https://github.com/thebitrebels/git-tresor
+cd git-tresor
+npm i
+npm link # After this you can test it by simply running 'git-tresor'
 ```
 
 To initialize a new repository you should start by setting up git:
@@ -14,7 +20,7 @@ To initialize a new repository you should start by setting up git:
 git init
 ```
 
-Of course you do not need this step if the git repository is already initialized. (TODO:) After that you can go ahead and initialize `git-tresor` by running:
+Of course you do not need this step if the git repository is already initialized. After that you can go ahead and initialize `git-tresor` by running:
 
 ```
 git-tresor init

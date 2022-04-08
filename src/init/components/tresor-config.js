@@ -2,10 +2,11 @@ import * as fs from 'fs';
 import inquirer from 'inquirer';
 import { success } from '../../logger.js';
 
-const template = (name, hashGeneration) => {
+const template = (name, hashGeneration, deleteAfterEncryption) => {
   return `{
   "name": "${name}",
-  "generateHash": ${hashGeneration}
+  "generateHash": ${hashGeneration},
+  "deleteAfterEncryption" : ${deleteAfterEncryption}
 }`;
 };
 
@@ -19,13 +20,20 @@ export async function init(useDefaults) {
   }
 
   success('=================  tresorconfig  =================');
+  // Needs to be answered even if the user chooses automatic setup
+  const { name } = await askName();
+
   // Generate .hash-Files to check for integrity?
   const { hashGeneration } = useDefaults
     ? { hashGeneration: true }
     : await askHashGeneration();
 
-  const { name } = await askName(); // Needs to be answered even if the user chooses automatic setup
-  return generateConfig(template(name, hashGeneration));
+  // Delete plaintext files after encryption?
+  const { deleteAfterEncryption } = useDefaults
+    ? { deleteAfterEncryption: true }
+    : await askDeleteAfterEncrypt();
+
+  return generateConfig(template(name, hashGeneration, deleteAfterEncryption));
 }
 export function successText() {
   return 'Generated .tresor.config.json!';
@@ -58,6 +66,15 @@ async function askHashGeneration() {
     type: 'confirm',
     message: 'Generate .hash-Files to check for integrity?',
     default: true,
+  });
+}
+
+async function askDeleteAfterEncrypt() {
+  return inquirer.prompt({
+    name: 'deleteAfterEncryption',
+    type: 'confirm',
+    message: 'Delete plaintext files after encryption is done?',
+    default: false,
   });
 }
 

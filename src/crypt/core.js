@@ -31,16 +31,20 @@ export async function encryptFile(file, password) {
       .pipe(appendInitVect)
       .pipe(writeStream)
       .on('finish', () => {
-        if (!config('generateHash')) {
-          return;
+        if (config('generateHash')) {
+          // Create a hash of the unencrypted file for later checks (after decryption)
+          const hashFile = path.join(file + '.hash');
+          fs.writeFileSync(hashFile, getHash(file), (err) => {
+            if (err !== null) {
+              throw new Error(err);
+            }
+          });
         }
-        // Create a hash of the unencrypted file for later checks (after decryption)
-        const hashFile = path.join(file + '.hash');
-        fs.writeFileSync(hashFile, getHash(file), (err) => {
-          if (err !== null) {
-            throw new Error(err);
-          }
-        });
+
+        // Optional file deletion needs to be the last step
+        if (config('deleteAfterEncryption')) {
+          fs.unlinkSync(file);
+        }
       });
   } catch (error) {
     spinner.error({ text: `Encryption failed! - ${error}` });

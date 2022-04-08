@@ -82,3 +82,4 @@ In all cases, you will be prompted to enter a password if you do not set `--pass
 
 - [Brandonstilson - Let's encrypt with node](https://medium.com/@brandonstilson/lets-encrypt-files-with-node-85037bea8c0e) - Source and inspiration for core encryption code
 - [git-secret](https://github.com/sobolevn/git-secret) - A bash-tool to store your private data inside a git repository.
+- [fastlane-match](https://docs.fastlane.tools/actions/match/) - Easily sync your certificates and profiles across your team

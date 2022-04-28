@@ -6,6 +6,9 @@ Encrypt and decrypt files to store them inside a git repository. `git-tresor` us
 
 ---
 
+<a href="https://github.com/thebitrebels/git-tresor/releases"><img src="https://img.shields.io/github/v/release/bitrebels/git-tresor?color=green&label=Release&logo=github" /></a>
+[![Test](https://github.com/thebitrebels/git-tresor/actions/workflows/test.yml/badge.svg)](https://github.com/thebitrebels/git-tresor/actions/workflows/test.yml)
+
 ## Setup
 
 `git-tresor` can be installed via `npm`. If you want to install it globally simply type the following command:

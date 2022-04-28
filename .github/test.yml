@@ -1,0 +1,63 @@
+name: Test
+
+on:
+  push: 
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+
+env:
+  TEST_MESSAGE: HelloWorld
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm i
+      - name: Link
+        run: npm link
+      - name: Create .tresor.config.json
+        run: echo "{\"name\": \"ci\", \"generateHash\": true, \"deleteAfterEncryption\" : true }"
+      - name: Create a text file
+        run: echo "$TEST_MESSAGE" > test.txt
+      - name: Encode
+        run: git-tresor -e -f test.txt -p secretPassword
+      - name: Check if plaintext file was deleted
+        run: |
+          if test -f "test.txt"; then
+            printf '%s\n' "File was not deleted\n" >&2
+            exit 1
+          else
+            exit 0
+          fi
+      - name: Check if hash was created
+        run: |
+          if test -f "test.txt.hasn"; then
+            exit 0
+          else
+            printf '%s\n' "Hash has not been created\n" >&2
+            exit 1
+          fi
+      - name: Decode
+        run: git-tresor -d -f test.txt.enc -p secretPassword
+      - name: Check if encrypted file was deleted
+        run: |
+          if test -f "test.txt.enc"; then
+            printf '%s\n' "File was not deleted\n" >&2
+            exit 1
+          else
+            exit 0
+          fi
+      - name: Check result
+        run |
+          if [[ $(< test.txt) != "$TEST_MESSAGE" ]]; then
+            echo "Success!"
+            exit 0
+          else
+            printf '%s\n' "Result was not the original input\n" >&2
+            echo "Found:\n"
+            echo "$(< test.txt)"
+            exit 1
+          fi
+       

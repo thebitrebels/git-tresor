@@ -1,7 +1,7 @@
 {
   "name": "git-tresor",
   "version": "1.0.0",
-  "description": "",
+  "description": "Encrypt and decrypt files to store them inside a git repository.",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -32,7 +32,7 @@ jobs:
           fi
       - name: Check if hash was created
         run: |
-          if test -f "test.txt.hasn"; then
+          if test -f "test.txt.hash"; then
             exit 0
           else
             printf '%s\n' "Hash has not been created\n" >&2

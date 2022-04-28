@@ -51,12 +51,12 @@ jobs:
       - name: Check result
         run: |
           if [[ $(< test.txt) != "$TEST_MESSAGE" ]]; then
-            echo "Success!"
-            exit 0
-          else
             printf '%s\n' "Result was not the original input\n" >&2
             echo "Found:\n"
             echo "$(< test.txt)"
             exit 1
+          else
+            echo "Success!"
+            exit 0
           fi
        

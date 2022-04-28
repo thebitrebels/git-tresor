@@ -27,7 +27,7 @@
     "crypto": "^1.0.1",
     "glob": "^8.0.1",
     "inquirer": "^8.2.2",
-    "nanospinner": "^1.0.0"
+    "nanospinner": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "8.14.0",

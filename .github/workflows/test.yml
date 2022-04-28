@@ -16,7 +16,8 @@ jobs:
       - name: Link
         run: npm link
       - name: Create .tresor.config.json
-        run: echo "{\"name\": \"ci\", \"generateHash\": true, \"deleteAfterEncryption\" : true }"
+        run: |
+          echo "{\"name\": \"ci\", \"generateHash\": true, \"deleteAfterEncryption\" : true }"
       - name: Create a text file
         run: echo "$TEST_MESSAGE" > test.txt
       - name: Encode

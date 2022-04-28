@@ -14,13 +14,7 @@ Encrypt and decrypt files to store them inside a git repository. `git-tresor` us
 `git-tresor` can be installed via `npm`. If you want to install it globally simply type the following command:
 
 ```
-npm i -g git-tresor # Not working until it is released
-
-## Current alternative
-git clone https://github.com/thebitrebels/git-tresor
-cd git-tresor
-npm i
-npm link # After this you can test it by simply running 'git-tresor'
+npm i -g git-tresor 
 ```
 
 For a local installation you run `npm i git-tresor --save-dev` from your npm-folder.

@@ -49,7 +49,7 @@ jobs:
             exit 0
           fi
       - name: Check result
-        run |
+        run: |
           if [[ $(< test.txt) != "$TEST_MESSAGE" ]]; then
             echo "Success!"
             exit 0

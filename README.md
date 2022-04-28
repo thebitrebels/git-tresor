@@ -6,8 +6,8 @@ Encrypt and decrypt files to store them inside a git repository. `git-tresor` us
 
 ---
 
-<a href="https://github.com/thebitrebels/git-tresor/releases"><img src="https://img.shields.io/github/v/release/bitrebels/git-tresor?color=green&label=Release&logo=github" /></a>
-[![Test](https://github.com/thebitrebels/git-tresor/actions/workflows/test.yml/badge.svg)](https://github.com/thebitrebels/git-tresor/actions/workflows/test.yml)
+<a href="https://github.com/thebitrebels/git-tresor/releases"><img src="https://img.shields.io/github/v/release/thebitrebels/git-tresor?color=lightgreen&label=Release&logo=github" /></a>
+<a href="https://github.com/thebitrebels/git-tresor/actions/workflows/test.yml"><img src="https://img.shields.io/github/workflow/status/thebitrebels/git-tresor/Test/master?color=lightgreen&label=Test&logo=github" /></a>
 
 ## Setup
 
